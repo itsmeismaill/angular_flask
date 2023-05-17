@@ -1,0 +1,16 @@
+.navbar{
+    justify-content: space-between;
+    background-color: #4CAF50;
+    padding: 12px   ;
+}
+span{
+    padding-right: 1rem;
+}
+.toolbar-link {
+    border: 1px solid black;
+    padding: 5px 10px;
+    background-color:white;
+    color:  #4CAF50;
+    border-radius: 20px;
+    text-decoration: none;
+  }

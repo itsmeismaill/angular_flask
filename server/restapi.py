@@ -66,13 +66,10 @@ def delete_car(car_id):
 
 @app.route('/editcar/<int:car_id>', methods=['PUT'])
 def edit_car(car_id):
-    
     args = request.json
     model = args.get('model')
     hp = args.get('hp')
     marque = args.get('marque')
-    print(car_id)
-    print(model)
 
     myCursor = mydb.cursor()
 
@@ -82,7 +79,7 @@ def edit_car(car_id):
     mydb.commit()
     print(myCursor.rowcount, "record(s) updated")
 
-    return "Car updated"
+    return jsonify({"message": "Car updated"})
 
 
 

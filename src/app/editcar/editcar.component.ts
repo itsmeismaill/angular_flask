@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CarServiceService } from '../car-service.service';
 import { CarModule } from '../car/car.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-editcar',
@@ -33,6 +34,6 @@ export class EditcarComponent implements OnInit {
     car.model = this.model;
     car.hp = this.hp;
     car.marque = this.marque;
-    this.theservice.editCar(car.id_car).subscribe();
+    this.theservice.editCar(car).subscribe();
   }
 }

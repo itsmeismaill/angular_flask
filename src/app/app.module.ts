@@ -11,6 +11,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { CarComponent } from './car/car.component';
 import { CarsComponent } from './cars/cars.component';
 import { EditcarComponent } from './editcar/editcar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {Component} from '@angular/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +32,13 @@ import { EditcarComponent } from './editcar/editcar.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatButtonModule,
+    MatToolbarModule
+    
 
   ],
   providers: [],

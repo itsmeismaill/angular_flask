@@ -1,12 +1,22 @@
-<p>Car Creation</p> <br>
 
-<label>Model</label>
-<input type ="text"  [(ngModel)]="model" /> <br>
-
-<label>HP</label>
-<input type ="number" [(ngModel)]="hp"/><br>
-
-<label>Marque</label>
-<input type ="text" [(ngModel)]="marque"/><br>
-
-<button (click)="saveMe()" > Save</button>
+<div class="container">
+    <h1 >Car Creation</h1>
+    <form>
+        <div class="form-group">
+            <label for="model">Model</label><br>
+            <input type="text" class="form-control" [(ngModel)]="model" />
+        </div>
+        <pre></pre>
+        <div class="form-group">
+            <label for="hp">HP</label><br>
+            <input type="number" class="form-control" [(ngModel)]="hp" />
+        </div>
+        <pre></pre>
+        <div class="form-group">
+            <label for="marque">Marque</label><br>
+            <input type="text" class="form-control" [(ngModel)]="marque" />
+        </div>
+        <pre></pre>
+        <button mat-fab color="accent" [routerLink]="'/lisofcars'" (click)="saveMe()">Save</button>
+    </form>
+</div>

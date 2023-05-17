@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { CarModule } from '../car/car.module';
 import { CarServiceService } from '../car-service.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-cars',
@@ -12,6 +13,8 @@ export class CarsComponent {
 
 
   cars!:CarModule[];
+  displayedColumns: string[] = ['id', 'model', 'hp', 'marque', 'actions'];
+ 
 
 
 constructor(private myservice:CarServiceService){

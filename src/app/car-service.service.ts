@@ -41,9 +41,9 @@ export class CarServiceService {
 
 
   }
-  editCar( id_car: number) {
-    const url = `${this.url}/editcar/${id_car}`;
-    return this.http.put(url, this.httpOptions);
+  editCar(car : CarModule):Observable<CarModule> {
+    const url = `${this.url}/editcar/${car.id_car}`;
+    return this.http.put<CarModule>(url, car, this.httpOptions);
   }
   
 
