@@ -1,0 +1,39 @@
+    <style>
+        .link-space {
+    margin-left: 10px;
+        }
+    </style>
+    <p>List of cars </p>
+
+    <table>
+
+
+        <th>
+    id
+        </th>
+        <th>
+        model 
+        </th>
+        <th>
+            hp
+        </th>
+        <th>
+        marque 
+        </th>
+        <th>
+        actions 
+        </th>
+
+
+    <tr  *ngFor="let car of cars">
+        <td>{{car.id_car}}</td>
+        <td>{{car.model}}</td>
+        <td>{{car.hp}}</td>
+        <td>{{car.marque}}</td>
+        <td><a [routerLink]="['/editcar', car.id_car]" >Edit     </a>
+            <span class="link-space"> </span>
+        <a  href="/lisofcars" (click)="deleteCar(car.id_car)" >supprimer</a></td>
+
+    </tr>
+
+    </table>

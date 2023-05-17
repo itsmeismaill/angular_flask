@@ -3,14 +3,30 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { EtudiantComponent } from './etudiant/etudiant.component';
+import { ProfComponent } from './prof/prof.component';
+import { FormsModule } from '@angular/forms';
+import { CalculatorComponent } from './calculator/calculator.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CarComponent } from './car/car.component';
+import { CarsComponent } from './cars/cars.component';
+import { EditcarComponent } from './editcar/editcar.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EtudiantComponent,
+    ProfComponent,
+    CalculatorComponent,
+    CarComponent,
+    CarsComponent,
+    EditcarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
