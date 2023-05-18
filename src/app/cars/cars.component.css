@@ -1,0 +1,22 @@
+
+
+ h1{
+   color: #4CAF50;
+   text-align: center;
+ }
+ .toolbar-link1 {
+    border: 1px solid #4CAF50;
+    padding: 5px 10px;
+    background-color:#4CAF50;
+    color:  white;
+    border-radius: 20px;
+    text-decoration: none;
+  }
+  .toolbar-link2 {
+    border: 1px solid rgb(247, 0, 0);
+    padding: 5px 10px;
+    background-color:red;
+    color: #fff;
+    border-radius: 20px;
+    text-decoration: none;
+  }

@@ -1,10 +1,27 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request  , jsonify
 import myCar as car
 import json
-from flask_cors import CORS
+from flask_jwt_extended import (
+    JWTManager, jwt_required, create_access_token,
+    get_jwt_identity
+)
+from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
+import bcrypt
+from flask_cors import CORS, cross_origin
+import mysql.connector
+import json
+import datetime
+from functools import wraps
+from users import User
+import bcrypt
+import os
 
 app = Flask(__name__)
+# os.getenv('JWT_SECRET')
+app.config['JWT_SECRET_KEY']="super-secret"
+jwt = JWTManager(app)
 CORS(app)
+
 
 import mysql.connector
 
@@ -80,7 +97,24 @@ def edit_car(car_id):
     print(myCursor.rowcount, "record(s) updated")
 
     return jsonify({"message": "Car updated"})
-
+@app.route('/register' , methods = ['POST'])
+def register():
+    try:
+        username = request.json.get("username", None)
+        password = request.json.get("password", None)
+        cursor = mydb.cursor()
+        req = "INSERT INTO users (username, password) VALUES (%s, %s)"
+        salt = bcrypt.gensalt()
+        hashed_password = bcrypt.hashpw(password.encode('utf8'), salt)
+        user = User(username, hashed_password)
+        val = (user.username, user.password)
+        cursor.execute(req, val)
+        mydb.commit()
+        access_token = create_access_token(identity=username)
+        return jsonify({"status": "success", "data": {"jwt": access_token}}), 201
+    except Exception as e:
+        print(e)
+        return jsonify({"status": "error", "data": "An error has occurred"}), 401
 
 
 if __name__ == '__main__':

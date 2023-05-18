@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     CalculatorComponent,
     CarComponent,
     CarsComponent,
-    EditcarComponent
+    EditcarComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

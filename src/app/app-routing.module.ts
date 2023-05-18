@@ -6,6 +6,7 @@ import { CalculatorComponent } from './calculator/calculator.component';
 import { CarComponent } from './car/car.component';
 import { CarsComponent } from './cars/cars.component';
 import { EditcarComponent } from './editcar/editcar.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
 // url avec la componenent 
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path:"lisofcars" , component:CarsComponent} ,
   {path:"calculator" , component:CalculatorComponent} ,
   {path:"editcar/:id_car" , component:EditcarComponent},
+  { path: 'register', component: RegisterComponent },
 
 ];
 
