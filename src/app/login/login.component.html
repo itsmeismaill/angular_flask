@@ -1,0 +1,15 @@
+<div class="container">
+    <h1 >Login</h1>
+        <div class="form-group">
+            <label for="id_car">Username</label><br>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="username" required/> 
+        </div>
+        <pre></pre>
+        <div class="form-group">
+            <label for="model">Password</label><br>
+            <input type="password" class="form-control" [(ngModel)]="password" required />
+        </div>
+        <pre></pre>
+        <button mat-fab color="accent"  (click)="login()">To log in</button><br><br>
+        <a  routerLink="/register"  >No account?</a>
+</div>

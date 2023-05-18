@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { CarServiceService } from '../car-service.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
 })
-export class RegisterComponent {
+export class LoginComponent {
   username = '';
   password = '';
 
@@ -16,7 +16,7 @@ export class RegisterComponent {
     localStorage.setItem('jwt', '');
   }
 
-  register() {
+  login() {
     let myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
 
@@ -32,11 +32,11 @@ export class RegisterComponent {
       redirect: 'follow',
     };
 
-    fetch('http://localhost:5000/register', requestOptions)
+    fetch('http://localhost:5000/login', requestOptions)
       .then((response) => response.json())
       .then((result) => {
         localStorage.setItem('jwt', result.data.jwt);
-        window.location.href = '/login';
+        window.location.href = '/lisofcars';
       })
       .catch((error) => console.log('error', error));
   }

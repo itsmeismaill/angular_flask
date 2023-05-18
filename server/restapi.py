@@ -36,6 +36,7 @@ mydb = mysql.connector.connect(
 # les web methods
 
 @app.route('/savecar', methods=['POST'])
+@jwt_required()
 def saveCar():
     args = request.json
     model = args.get('model')
@@ -56,6 +57,7 @@ def saveCar():
 
 
 @app.route('/cars', methods=['GET'])
+@jwt_required()
 def getCars():
     mylist = []
     req = "SELECT * FROM car"
@@ -70,6 +72,7 @@ def getCars():
 
 
 @app.route('/deletecar/<int:car_id>', methods=['DELETE'])
+@jwt_required()
 def delete_car(car_id):
     myCursor = mydb.cursor()
 
@@ -82,6 +85,7 @@ def delete_car(car_id):
     return jsonify({"message": "Car deleted"})
 
 @app.route('/editcar/<int:car_id>', methods=['PUT'])
+@jwt_required()
 def edit_car(car_id):
     args = request.json
     model = args.get('model')
@@ -115,6 +119,33 @@ def register():
     except Exception as e:
         print(e)
         return jsonify({"status": "error", "data": "An error has occurred"}), 401
+@app.route('/login' , methods = ['POST'])
+def login():
+    try:
+        username = request.json.get("username", None)
+        password = request.json.get("password", None)
+
+        if not username or not password or len(username) < 3 or len(password) < 3:
+            return jsonify({"data": "Bad username or password"}), 401
+
+        cursor = mydb.cursor()
+        req = "SELECT * FROM users WHERE username = %s"
+        val = (username,)
+        cursor.execute(req, val)
+        result = cursor.fetchone()
+        if result is None:
+            return jsonify({"status": "error", "data": "Bad username or password"}), 401
+        user = User(result[1], result[2])
+        compare_passwords = bcrypt.checkpw(password.encode('utf8'), user.password.encode('utf8'))
+        if not compare_passwords:
+            return jsonify({"status": "error", "data": "Bad username or password"}), 401
+
+        access_token = create_access_token(identity=username)
+        return jsonify({"status": "success", "data": {"jwt": access_token}}), 201
+    except Exception as e:
+        print(e)
+        return jsonify({"status": "error", "data": "An error has occurred"}), 401
+    
 
 
 if __name__ == '__main__':

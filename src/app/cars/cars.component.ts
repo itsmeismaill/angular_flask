@@ -17,22 +17,25 @@ export class CarsComponent {
  
 
 
-constructor(private myservice:CarServiceService){
+constructor(private myservice:CarServiceService ,){
   this.myservice.getAllcars().subscribe(
 
       (data)=>{
 
         this.cars = data;
       }
-
-
   );
+
 }
+ 
 deleteCar(carId: number) {
   console.log("Delete car!");
 
   this.myservice.deleteCar(carId).subscribe();
 }
+// refreshPage() {
+//   window.location.reload();
+// }
 
 
 
